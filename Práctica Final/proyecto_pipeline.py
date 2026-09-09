@@ -70,18 +70,17 @@ Agrupa el dataset por Genre, y calcula el promedio de RottenTomatoes de cada gé
 Agrupa el dataset por LeadStudio, y calcula el promedio de Ganancia de cada estudio, redondeado a 1 decimal.
 """
 
-
 # Promedio de RottenTomatoes por género (redondeado a 1 decimal)
 df_genre = df.groupby("Genre")["RottenTomatoes"].mean().round(1)
-print(df_genre.sort_values(ascending=False).head(1))
-
-#Validación Pregunta
 print(df_genre.sort_values(ascending=False))
-print(df["Genre"].value_counts())
+
+# #Validación Pregunta
+# print(df_genre.sort_values(ascending=False))
+# print(df["Genre"].value_counts())
 
 # Promedio de Ganancia por estudio (redondeado a 1 decimal)
 df_studio = df.groupby("LeadStudio")["Ganancia"].mean().round(1)
-print(df_studio.sort_values(ascending=False).head(1))
+print(df_studio.sort_values(ascending=False))
 
 #Etapa 6: Guardar el resultado
 """
