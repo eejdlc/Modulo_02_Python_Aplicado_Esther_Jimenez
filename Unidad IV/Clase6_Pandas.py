@@ -1,4 +1,6 @@
 import pandas as pd
+import numpy as np
+
 df = pd.read_csv("titanic.csv")
 print(df.shape)
 print(list(df.columns))
@@ -56,4 +58,32 @@ Estudiantes = pd.DataFrame({
     "curso": ["Matemáticas", "Física", "Química", "Biología"]
 })
 print(Estudiantes)
+
+#Eliminar valores de filas vacías
+edades = df["Age"].dropna()
+
+#Crear array de numpy con una Serie (pandas)
+edades_array = edades.to_numpy()
+
+print(type(edades_array))
+
+#Fórmulas utilizadas en numpy para calcular
+print("Promedio de edad:", round(np.mean(edades_array),1))
+print("Edad maxima:", np.max(edades_array))
+print("Edad minima:", np.min(edades_array))
+print("Desviacion estandar:", round(np.std(edades_array),1))
+
+"""
+EJERCICIO GUIADO
+
+1. filtrar el DataFrame para quedarse solo con los pasajeros de la columna "Pclass".
+2. guardar en una variable nueva e imprimira cuantas filas tienes.
+3. despues utilizar el metodo .value_counts() sobre la columna "Pclass" del DataFrame original.
+
+objetivo: visualizar cuantos pasajeros habia en cada clase
+
+"""
+pasajeros_primera_clase = df[df["Pclass"] == 1]
+print(pasajeros_primera_clase.shape)
+print(df["Pclass"].value_counts())
 
